@@ -1,0 +1,15 @@
+<header class="header">
+  <h1 class="app-title"><%= appTitle %></h1>
+  <nav class="navbar">
+    <a href="/" class="<%= currentPath === '/' ? 'active' : '' %>">Home</a>
+    <a href="/users/signup" class="<%= currentPath === '/users/signup' ? 'active' : '' %>"
+      >Sign Up</a
+    >
+    <a href="/auth/login" class="<%= currentPath === '/auth/login' ? 'active' : '' %>"
+      >Log In</a
+    >
+    <a href="/auth/logout" class="<%= currentPath === '/auth/logout' ? 'active' : '' %>"
+      >Log Out</a
+    >
+  </nav>
+</header>
