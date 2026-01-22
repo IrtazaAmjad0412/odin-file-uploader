@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%= appTitle %></title>
+    <link rel="stylesheet" href="/css/styles.css" />
+  </head>
+  <body>
+    <%- include("header.ejs") %>
+    <section class="form-section">
+      <h2 class="page-title">Create Your Account</h2>
+      <form action="/users/signup" method="post">
+        <label for="email">Email</label>
+        <input
+          type="email"
+          name="email"
+          id="email"
+          value="<%= oldInput ? oldInput.email : '' %>"
+          required
+        />
+        <% if (errors?.email) { %>
+        <p class="errors"><%= errors.email.msg %></p>
+        <% } %>
+        <label for="password">Password</label>
+        <input type="password" name="password" id="password" required />
+        <% if (errors?.password) { %>
+        <p class="errors"><%= errors.password.msg %></p>
+        <% } %>
+        <label for="confirmPassword">Confirm Password</label>
+        <input type="password" name="confirmPassword" id="confirmPassword" required />
+        <% if (errors?.confirmPassword) { %>
+        <p class="errors"><%= errors.confirmPassword.msg %></p>
+        <% } %>
+        <button type="submit" class="btn">Sign Up</button>
+      </form>
+    </section>
+  </body>
+</html>
