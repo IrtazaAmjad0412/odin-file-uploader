@@ -6,6 +6,7 @@ import { sessionMiddleware } from "./lib/session.js";
 import { initializeLocalStrategy } from "./lib/passport.js";
 import { homepageRouter } from "./routes/homepageRouter.js";
 import { userRouter } from "./routes/userRouter.js";
+import { authRouter } from "./routes/authRouter.js";
 
 const app = express();
 const __filename = fileURLToPath(import.meta.url);
@@ -33,6 +34,7 @@ app.set("view engine", "ejs");
 
 app.use("/", homepageRouter);
 app.use("/users", userRouter);
+app.use("/auth", authRouter);
 
 const PORT = 3000;
 app.listen(PORT, (err) => {
