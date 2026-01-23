@@ -39,3 +39,12 @@ model File {
   folder Folder? @relation(fields: [folderId], references: [id])
   @@map("files")
 }
+
+model Session {
+  id String @id @default(cuid())
+  sid String @unique
+  data String
+  expiresAt DateTime
+  @@index([expiresAt])
+  @@map("session")
+}
