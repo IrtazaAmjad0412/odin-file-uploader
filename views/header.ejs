@@ -1,6 +1,7 @@
 <header class="header">
   <h1 class="app-title"><%= appTitle %></h1>
   <nav class="navbar">
+    <% if (!user) { %>
     <a href="/" class="<%= currentPath === '/' ? 'active' : '' %>">Home</a>
     <a href="/users/signup" class="<%= currentPath === '/users/signup' ? 'active' : '' %>"
       >Sign Up</a
@@ -8,8 +9,13 @@
     <a href="/auth/login" class="<%= currentPath === '/auth/login' ? 'active' : '' %>"
       >Log In</a
     >
-    <a href="/auth/logout" class="<%= currentPath === '/auth/logout' ? 'active' : '' %>"
-      >Log Out</a
-    >
+    <% } else { %>
+    <a href="/" class="<%= currentPath === '/' ? 'active' : '' %>">Home</a>
+    <form action="/auth/logout" method="post">
+      <button type="submit" class="<%= currentPath === '/auth/logout' ? 'active' : '' %>">
+        Log Out
+      </button>
+    </form>
+    <% } %>
   </nav>
 </header>
