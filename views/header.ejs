@@ -11,6 +11,9 @@
     >
     <% } else { %>
     <a href="/" class="<%= currentPath === '/' ? 'active' : '' %>">Home</a>
+    <a href="/dashboard" class="<%= currentPath === '/dashboard' ? 'active' : '' %>"
+      >Dashboard</a
+    >
     <form action="/auth/logout" method="post">
       <button type="submit" class="<%= currentPath === '/auth/logout' ? 'active' : '' %>">
         Log Out
