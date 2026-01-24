@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%= appTitle %></title>
+    <link rel="stylesheet" href="/css/styles.css" />
+  </head>
+  <body>
+    <%- include("header.ejs") %>
+    <section class="dashboard-section">
+      <h2 class="welcome-msg">
+        Welcome, <span class="username"><%= user.email %></span>!
+      </h2>
+      <div class="dashboard-actions">
+        <a href="/folders/new" class="btn">+ New Folder</a>
+      </div>
+    </section>
+    <section class="folder-section">
+      <h2 class="user-folders">Your Folders</h2>
+      <% if (folders.length === 0) { %>
+      <p class="no-folders-msg">No folders yet.</p>
+      <% } else { %>
+      <ul class="folder-list">
+        <% folders.forEach(folder => { %>
+        <li class="folder-item">
+          <a href="/folders/<%= folder.id %>">
+            📁 <span class="folder-name"><%= folder.name %></span>
+          </a>
+          <a href="/folders/<%= folder.id %>" class="view">View Folder</a>
+          <a href="/folders/<%= folder.id %>" class="edit">Edit Folder</a>
+          <a href="/folders/<%= folder.id %>" class="delete">Delete Folder</a>
+        </li>
+        <% }) %>
+      </ul>
+      <% } %>
+    </section>
+  </body>
+</html>

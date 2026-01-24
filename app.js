@@ -7,6 +7,8 @@ import { initializeLocalStrategy } from "./lib/passport.js";
 import { homepageRouter } from "./routes/homepageRouter.js";
 import { userRouter } from "./routes/userRouter.js";
 import { authRouter } from "./routes/authRouter.js";
+import { dashboardRouter } from "./routes/dashboardRouter.js";
+import { folderRouter } from "./routes/folderRouter.js";
 
 const app = express();
 const __filename = fileURLToPath(import.meta.url);
@@ -26,6 +28,8 @@ app.use((req, res, next) => {
   res.locals.currentPath = req.path;
   res.locals.errors = [];
   res.locals.oldInput = [];
+  res.locals.folders = [];
+  res.locals.folder = [];
   next();
 });
 
@@ -35,6 +39,8 @@ app.set("view engine", "ejs");
 app.use("/", homepageRouter);
 app.use("/users", userRouter);
 app.use("/auth", authRouter);
+app.use("/dashboard", dashboardRouter);
+app.use("/folders", folderRouter);
 
 const PORT = 3000;
 app.listen(PORT, (err) => {

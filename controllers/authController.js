@@ -32,8 +32,7 @@ export const loginUser = (req, res, next) => {
       if (err) {
         return next(err);
       }
-      // Will need to redirect to dashboard once it is set-up.
-      return res.redirect("/");
+      return res.redirect("/dashboard");
     });
   })(req, res, next);
 };
@@ -50,4 +49,11 @@ export const logoutUser = (req, res, next) => {
       res.redirect("/");
     });
   });
+};
+
+export const ensureAuthenticated = (req, res, next) => {
+  if (req.user) {
+    return next();
+  }
+  return res.redirect("/auth/login");
 };
