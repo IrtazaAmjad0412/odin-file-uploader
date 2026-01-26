@@ -225,7 +225,7 @@ body {
   justify-content: space-evenly;
   padding: 0.75rem;
   border: 1px solid var(--highlight);
-  background: linear-gradient(135deg, var(--border), var(--border-muted));
+  background: var(--border);
 }
 
 .folder-section .folder-item a,
@@ -240,6 +240,9 @@ body {
 
 .folder-section .folder-item .delete {
   text-decoration: none;
+  font-size: 1rem;
+  border: none;
+  background: var(--border);
   color: var(--danger);
 }
 
