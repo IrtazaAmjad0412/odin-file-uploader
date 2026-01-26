@@ -29,7 +29,9 @@
           </a>
           <a href="/folders/<%= folder.id %>" class="view">View Folder</a>
           <a href="/folders/<%= folder.id %>/edit" class="edit">Edit Folder</a>
-          <a href="/folders/<%= folder.id %>" class="delete">Delete Folder</a>
+          <form action="/folders/<%= folder.id %>/delete" method="post">
+            <button type="submit" class="delete">Delete Folder</button>
+          </form>
         </li>
         <% }) %>
       </ul>

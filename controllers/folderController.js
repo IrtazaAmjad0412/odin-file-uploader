@@ -111,3 +111,26 @@ export const editFolder = async (req, res) => {
     res.status(500).send("Server Error");
   }
 };
+
+export const deleteFolder = async (req, res) => {
+  try {
+    const folderId = Number(req.params.id);
+    const { id } = req.user;
+    const folder = await prisma.folder.findFirst({
+      where: {
+        id: folderId,
+        userId: id,
+      },
+    });
+    if (!folder) {
+      return res.status(404).send("Folder not found");
+    }
+    await prisma.folder.delete({
+      where: { id: folderId },
+    });
+    res.redirect("/dashboard");
+  } catch (err) {
+    console.error(err);
+    res.status(500).send("Server Error");
+  }
+};
