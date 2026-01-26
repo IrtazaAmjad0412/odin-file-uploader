@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%= appTitle %></title>
+    <link rel="stylesheet" href="/css/styles.css" />
+  </head>
+  <body>
+    <%- include("header.ejs") %>
+    <section class="form-section">
+      <h2 class="page-title">Edit Folder</h2>
+      <form action="/folders/<%= folder.id %>/edit" method="post">
+        <label for="name">Name</label>
+        <input
+          type="text"
+          name="name"
+          id="name"
+          value="<%= oldInput?.name ?? folder.name %>"
+          required
+        />
+        <% if (errors?.name) { %>
+        <p class="errors"><%= errors.name.msg %></p>
+        <% } %>
+        <button type="submit" class="btn">Update</button>
+      </form>
+    </section>
+  </body>
+</html>
