@@ -24,10 +24,8 @@
       <ul class="folder-list">
         <% folders.forEach(folder => { %>
         <li class="folder-item">
-          <a href="/folders/<%= folder.id %>">
-            📁 <span class="folder-name"><%= folder.name %></span>
-          </a>
-          <a href="/folders/<%= folder.id %>" class="view">View Folder</a>
+          <p>📁 <span class="folder-name"><%= folder.name %></span></p>
+          <a href="/folders/<%= folder.id %>/files" class="view">View Files</a>
           <a href="/folders/<%= folder.id %>/edit" class="edit">Edit Folder</a>
           <form action="/folders/<%= folder.id %>/delete" method="post">
             <button type="submit" class="delete">Delete Folder</button>

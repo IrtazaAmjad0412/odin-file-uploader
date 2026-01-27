@@ -30,6 +30,7 @@ app.use((req, res, next) => {
   res.locals.oldInput = [];
   res.locals.folders = [];
   res.locals.folder = [];
+  res.locals.files = [];
   next();
 });
 

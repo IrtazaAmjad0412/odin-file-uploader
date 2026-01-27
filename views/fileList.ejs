@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%= appTitle %></title>
+    <link rel="stylesheet" href="/css/styles.css" />
+  </head>
+  <body>
+    <%- include("header.ejs") %>
+    <section class="dashboard-section">
+      <h2 class="welcome-msg">
+        Welcome, <span class="username"><%= user.email %></span>!
+      </h2>
+      <div class="dashboard-actions">
+        <a href="/folders/<%= folderId %>/files/new" class="btn">+ New File</a>
+        <a href="/dashboard" class="btn">Back to Folders</a>
+      </div>
+    </section>
+    <section class="file-section">
+      <h2 class="user-files">Files in Folder</h2>
+      <% if (files.length === 0) { %>
+      <p class="no-files-msg">No files in this folder yet.</p>
+      <% } else { %>
+      <ul class="file-list">
+        <% files.forEach(file => { %>
+        <li class="file-item">
+          <p>Name: <%= file.name %></p>
+          <p>Size: <%= (file.size / 1024).toFixed(2) %> KB</p>
+          <p>Uploaded At: <%= file.createdAt.toLocaleString() %></p>
+          <a
+            href="/folders/<%= folderId %>/files/<%= file.id %>/download"
+            class="download"
+            >Download</a
+          >
+        </li>
+        <% }) %>
+      </ul>
+      <% } %>
+    </section>
+  </body>
+</html>
