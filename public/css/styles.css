@@ -160,6 +160,15 @@ body {
   outline: 2px solid var(--text);
 }
 
+.form-section input::-webkit-file-upload-button {
+  margin-right: 0.5rem;
+  padding: 0.25rem 0.5rem;
+  border-radius: 6px;
+  border: none;
+  background-color: var(--primary-muted);
+  color: var(--text);
+}
+
 .form-section .errors {
   color: var(--danger);
 }
@@ -200,18 +209,27 @@ body {
   color: transparent;
 }
 
-.folder-section {
+.dashboard-section .dashboard-actions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.folder-section,
+.file-section {
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
   margin: 2rem 5.15rem;
 }
 
-.folder-section .user-folders {
+.folder-section .user-folders,
+.file-section .user-files {
   color: var(--text-muted);
 }
 
-.folder-section .no-folders-msg {
+.folder-section .no-folders-msg,
+.file-section .no-files-msg {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -220,7 +238,8 @@ body {
   color: var(--info);
 }
 
-.folder-section .folder-item {
+.folder-section .folder-item,
+.file-section .file-item {
   display: flex;
   justify-content: space-evenly;
   padding: 0.75rem;
@@ -229,10 +248,12 @@ body {
 }
 
 .folder-section .folder-item a,
-.folder-section .folder-item .view {
+.folder-section .folder-item .view,
+.file-section .file-item .download {
   text-decoration: none;
   color: var(--primary-muted);
 }
+
 .folder-section .folder-item .edit {
   text-decoration: none;
   color: var(--info);
@@ -248,7 +269,8 @@ body {
 
 .folder-section .folder-item .view:hover,
 .folder-section .folder-item .edit:hover,
-.folder-section .folder-item .delete:hover {
+.folder-section .folder-item .delete:hover,
+.file-section .file-item .download:hover {
   text-decoration: underline;
 }
 
@@ -257,30 +279,4 @@ body {
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
-}
-
-.folder-details-section {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 1.5rem;
-  min-height: calc(100vh - 78px);
-}
-
-.folder-details-section .btn {
-  margin-top: 1rem;
-  padding: 0.5rem 1rem;
-  font-size: 1rem;
-  text-decoration: none;
-  border-radius: 8px;
-  border: 1px solid var(--border-muted);
-  background: linear-gradient(45deg, var(--bg-dark), var(--bg), var(--bg-light));
-  color: var(--primary-muted);
-}
-
-.folder-details-section .btn:hover {
-  box-shadow: inset 0 0 6px 4px var(--border-muted);
-  border-color: var(--highlight);
-  color: var(--primary);
 }
